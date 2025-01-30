@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JsonifyRequest {
-    private Object payload;
+    private String inputStringPayload;
 }
