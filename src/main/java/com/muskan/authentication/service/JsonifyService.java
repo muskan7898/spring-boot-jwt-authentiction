@@ -16,12 +16,12 @@ public class JsonifyService {
 
     public JsonifyResponse convertToJson(JsonifyRequest jsonifyRequest){
         try{
-            Object json = objectMapper.readTree(jsonifyRequest.getPayload().toString());
-            String jsonstring = objectMapper.writeValueAsString(json);
+            String jsonstring = objectMapper.writeValueAsString(jsonifyRequest.getPayload());
             return  new JsonifyResponse(jsonstring);
-        }
-        catch (JsonProcessingException e){
+        } catch (JsonProcessingException e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid json");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
