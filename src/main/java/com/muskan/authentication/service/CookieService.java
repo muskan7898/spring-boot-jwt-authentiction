@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class CookieService {
 
     private final String COUNTER_COOKIE_NAME = "counter";
+    private final String USER_DETAILS_COOKIE_NAME = "userDetails";
 
     public int getCount(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();

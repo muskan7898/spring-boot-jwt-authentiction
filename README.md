@@ -21,3 +21,15 @@ On Further request get the value of the cookie you have set, increment it, updat
 
 - Create a cookie service to handle this logic
 - This api must be in a CookieController
+
+### Task 2 - JSONIFY 
+**Description -**
+
+You have to create an api in a controller with the endpoint `/jsonify`, this is a post request and will accept any body, convert it in to json and return the json string as a response.
+
+As we know not everything can be converted into json like
+
+```
+{ "name" : "snehal"
+```
+cannot be converted into json as we are missing a closing bracket, if this is the case then return a 400 status response.
