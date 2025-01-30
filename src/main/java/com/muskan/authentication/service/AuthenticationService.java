@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final AuthenticationRepo authenticationRepo;
+    private final String COOKIE_NAME = "count";
+
     public SignupResponse signup(SignupRequest signupRequest) {
         // create the user with the signup request
         try {
@@ -25,10 +27,10 @@ public class AuthenticationService {
             User user = User.builder()
                     .username(signupRequest.getUsername())
                     .password(signupRequest.getPassword())
-                        .build();
+                            .build();
 
 
-            User savedUser =  authenticationRepo.save(user);
+            User savedUser = authenticationRepo.save(user);
             System.out.println(savedUser.getId().toString());
 
             return new SignupResponse(
@@ -39,10 +41,10 @@ public class AuthenticationService {
         }
         catch (ResponseStatusException e) {
             throw e;
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
-
-    private final String COOKIE_NAME = "count";
 
     public int getCount(HttpServletRequest request){
         Cookie[] cookies = request.getCookies();
