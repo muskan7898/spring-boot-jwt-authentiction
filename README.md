@@ -33,3 +33,11 @@ As we know not everything can be converted into json like
 { "name" : "snehal"
 ```
 cannot be converted into json as we are missing a closing bracket, if this is the case then return a 400 status response.
+
+---
+
+# Jwt Related questions
+
+## What is JWT
+
+## How JWT works
