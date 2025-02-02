@@ -35,7 +35,7 @@ public class AuthenticationController {
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response){
         try{
             String token = authenticationService.login(loginRequest);
-            cookieService.setAuthCookie(response, token);
+            cookieService.createAuthCookie(response, token);
             return ResponseEntity.ok("login success");
         }
         catch (ResponseStatusException e){
@@ -46,7 +46,7 @@ public class AuthenticationController {
         }
     }
 
-    @GetMapping("/get-user")
+    @GetMapping("/user")
     public ResponseEntity<?> getUserDetail(HttpServletResponse response, HttpServletRequest request){
         try{
             Cookie cookie = cookieService.getAuthCookie(request);

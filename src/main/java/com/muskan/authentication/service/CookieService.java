@@ -35,7 +35,7 @@ public class CookieService {
         response.addCookie(cookie);
     }
 
-    public void setAuthCookie(HttpServletResponse response, String token){
+    public void createAuthCookie(HttpServletResponse response, String token){
         Cookie cookie = new Cookie("auth", token);
         cookie.setPath("/");
         cookie.setMaxAge(600);
