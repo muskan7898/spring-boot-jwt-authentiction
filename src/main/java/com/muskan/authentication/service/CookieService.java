@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class CookieService {
 
@@ -24,10 +26,30 @@ public class CookieService {
         return 0;
     }
 
+
+
     public void setCount(HttpServletResponse response, int count){
         Cookie cookie = new Cookie(COUNTER_COOKIE_NAME, String.valueOf(count));
         cookie.setMaxAge(900);
         cookie.setPath("/");
         response.addCookie(cookie);
     }
+
+    public void setAuthCookie(HttpServletResponse response, String token){
+        Cookie cookie = new Cookie("auth", token);
+        cookie.setPath("/");
+        cookie.setMaxAge(600);
+        response.addCookie(cookie);
+    }
+
+    public Cookie getAuthCookie(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        for(Cookie cookie : cookies){
+            if(Objects.equals(cookie.getName(), "auth")){
+                return cookie;
+            }
+        }
+        return null;
+    }
+
 }
