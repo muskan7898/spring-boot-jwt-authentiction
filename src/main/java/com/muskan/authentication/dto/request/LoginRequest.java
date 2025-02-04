@@ -1,14 +1,15 @@
-package com.muskan.authentication.dto.response;
+package com.muskan.authentication.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class SignupResponse {
-    private Long id;
+
+public class LoginRequest {
     private String username;
     private String password;
 }
+
